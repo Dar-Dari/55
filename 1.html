@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حامی کشت - مشاوره رایگان کشاورزی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%234CAF50' /%3E%3Cpath d='M0 200 Q 200 100 400 200 T 800 200' stroke='%2343A047' stroke-width='10' fill='none' /%3E%3Cpath d='M0 250 Q 200 150 400 250 T 800 250' stroke='%2343A047' stroke-width='8' fill='none' /%3E%3Ccircle cx='600' cy='100' r='60' fill='%23FFC107' /%3E%3Cpath d='M0 50 L 800 50 L 800 0 L 0 0 Z' fill='%23388E3C' /%3E%3Cpath d='M100 400 Q 200 300 300 350 T 500 300 T 700 350 T 800 300 L 800 400 L 100 400 Z' fill='%23388E3C' /%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #388E3C;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: #FFA726;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FB8C00;
+            transform: translateY(-2px);
+        }
+        
+        .btn-tertiary {
+            background-color: #29B6F6;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-tertiary:hover {
+            background-color: #0288D1;
+            transform: translateY(-2px);
+        }
+        
+        .stat-counter {
+            animation: countUp 3s ease-out forwards;
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- بخش اصلی (Hero Section) -->
+    <section class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-5xl font-bold mb-6">🌿 مشاوره جهادی و رایگان برای کشاورزان و باغ‌داران 🌿</h1>
+            <p class="text-xl md:text-2xl mb-8">ما اینجاییم تا به شما کمک کنیم مشکلات محصولاتتون رو حل کنید</p>
+            <p class="text-lg md:text-xl mb-10 opacity-90">مشاوره رایگان، دقیق، هوشمند و بدون هزینه برای کشاورزان و باغداران عزیز</p>
+            <button class="btn-secondary text-white text-xl px-8 py-4 rounded-lg font-bold shadow-lg">
+                🌾 دریافت مشاوره هوشمند 🌾
+            </button>
+        </div>
+    </section>
+
+    <!-- بخش خدمات (Cards) -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">خدمات ما</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- کارت 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-500 card-hover transition-all duration-300">
+                    <div class="text-4xl mb-4 text-green-500">📈</div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">درخواست مشاوره تخصصی</h3>
+                    <p class="text-gray-600 mb-6">برای ثبت مشکل و بررسی توسط متخصصان</p>
+                    <button class="btn-primary text-white px-6 py-3 rounded-lg w-full">
+                        ثبت درخواست
+                    </button>
+                </div>
+                
+                <!-- کارت 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-orange-500 card-hover transition-all duration-300">
+                    <div class="text-4xl mb-4 text-orange-500">🧠</div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">دریافت مشاوره هوشمند</h3>
+                    <p class="text-gray-600 mb-6">استفاده از هوش مصنوعی برای تحلیل و پیشنهاد</p>
+                    <button class="btn-secondary text-white px-6 py-3 rounded-lg w-full">
+                        مشاوره هوشمند
+                    </button>
+                </div>
+                
+                <!-- کارت 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-blue-500 card-hover transition-all duration-300">
+                    <div class="text-4xl mb-4 text-blue-500">🛒</div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">معرفی محصولات و خدمات</h3>
+                    <p class="text-gray-600 mb-6">مشاهده محصولات مناسب و توصیه‌شده</p>
+                    <button class="btn-tertiary text-white px-6 py-3 rounded-lg w-full">
+                        مشاهده محصولات
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش مزایا -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">مزایای استفاده از خدمات ما</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- مزیت 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-green-500 text-3xl mb-4">✅</div>
+                    <h3 class="font-bold text-lg mb-2">مشاوره فوری و دقیق</h3>
+                    <p class="text-gray-600 text-sm">پاسخگویی سریع به نیازهای شما</p>
+                </div>
+                
+                <!-- مزیت 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-green-500 text-3xl mb-4">✅</div>
+                    <h3 class="font-bold text-lg mb-2">تحلیل بر اساس داده‌های واقعی</h3>
+                    <p class="text-gray-600 text-sm">استفاده از اطلاعات دقیق و به‌روز</p>
+                </div>
+                
+                <!-- مزیت 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-green-500 text-3xl mb-4">✅</div>
+                    <h3 class="font-bold text-lg mb-2">بدون هزینه و کاملاً رایگان</h3>
+                    <p class="text-gray-600 text-sm">خدمات مشاوره‌ای بدون پرداخت هزینه</p>
+                </div>
+                
+                <!-- مزیت 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-green-500 text-3xl mb-4">✅</div>
+                    <h3 class="font-bold text-lg mb-2">مناسب همه محصولات کشاورزی</h3>
+                    <p class="text-gray-600 text-sm">پشتیبانی از انواع محصولات زراعی و باغی</p>
+                </div>
+                
+                <!-- مزیت 5 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-green-500 text-3xl mb-4">✅</div>
+                    <h3 class="font-bold text-lg mb-2">تحلیل تصویری</h3>
+                    <p class="text-gray-600 text-sm">امکان ارسال عکس برای بررسی دقیق‌تر</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش آمار -->
+    <section class="py-16 bg-green-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">آمار و دستاوردها</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-4xl font-bold text-green-600 mb-2 stat-counter">۱۲,۵۰۰+</div>
+                    <p class="text-gray-600">کشاورز مشاوره گرفته</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-4xl font-bold text-green-600 mb-2 stat-counter">۸,۲۰۰+</div>
+                    <p class="text-gray-600">مشکل حل شده</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-4xl font-bold text-green-600 mb-2 stat-counter">۳۲</div>
+                    <p class="text-gray-600">متخصص کشاورزی</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-4xl font-bold text-green-600 mb-2 stat-counter">۹۵٪</div>
+                    <p class="text-gray-600">رضایت کاربران</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- فرم ثبت سریع مشکل -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">ثبت سریع مشکل</h2>
+            <p class="text-center text-gray-600 mb-8">مشکل خود را به سرعت با ما در میان بگذارید تا کارشناسان ما در اسرع وقت به شما پاسخ دهند</p>
+            
+            <form class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2" for="product">
+                        نام محصول
+                    </label>
+                    <input class="appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500" id="product" type="text" placeholder="مثال: گندم، سیب، زیتون">
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-bold mb-2" for="problem">
+                        شرح مشکل
+                    </label>
+                    <textarea class="appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500" id="problem" rows="4" placeholder="مشکل خود را توضیح دهید..."></textarea>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="block text-gray-700 font-bold mb-2" for="image">
+                        افزودن تصویر (اختیاری)
+                    </label>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-green-500 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <p class="mt-2 text-sm text-gray-600">برای آپلود تصویر کلیک کنید یا فایل را اینجا رها کنید</p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center">
+                    <button class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg" type="button">
+                        ارسال درخواست
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="bg-green-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">حامی کشت</h3>
+                    <p class="text-green-100">مشاوره هوشمند و رایگان برای کشاورزان و باغداران عزیز</p>
+                    <div class="flex mt-4 space-x-4 space-x-reverse">
+                        <a href="#" class="bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.05 1.577c-.393-.016-.784.08-1.117.235-.484.186-4.92 1.902-9.41 3.64-2.26.873-4.518 1.746-6.256 2.415-1.737.67-3.045 1.168-3.114 1.192-.46.16-1.082.362-1.61.984-.133.155-.267.354-.335.628s-.077.56-.023.812c.268 1.32 1.352 1.895 1.905 2.155.143.066 1.33.573 2.42 1.025.265 1.3.683 3.367 1.022 5.04.476 2.36 1.12 5.565 1.187 5.957.075.462.33.916.618 1.17s.598.273.96.273c.41.01.816-.176 1.1-.45.9-.83 2.364-2.42 2.364-2.42l3.33 2.45c.218.163.456.24.69.23.413-.014.813-.225 1.07-.483.315-.32.49-.77.6-1.37.186-1.034 1.972-11.475 2.264-13.18.152-.865.222-1.587.234-2.132.01-.394-.01-.794-.186-1.14-.175-.354-.505-.6-.88-.653zm-2.622 2.97c-.282 1.634-1.943 10.598-2.15 11.775-.203 1.16-1.006 1.055-1.006 1.055l-4.15-3.04s-2.344 2.272-2.853 2.757c-.24.226-.504.18-.504-.173 0 0 .083-2.216.282-3.63.1-.718.48-1.94.907-3.202.9-2.667 2.187-6.5 2.187-6.5l8.07-3.018c.417-.153.708.002.708.002.01 0 .65.258.51.982z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">لینک‌های مهم</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">صفحه اصلی</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">خدمات</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">درباره ما</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">تماس با ما</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">سوالات متداول</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">خدمات</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">مشاوره تخصصی</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">مشاوره هوشمند</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">محصولات کشاورزی</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">آموزش‌های کشاورزی</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">تماس با ما</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span class="text-green-100">۰۲۱-۱۲۳۴۵۶۷۸</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-green-100">info@hamikesht.ir</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-green-100">تهران، خیابان کشاورز، پلاک ۱۲۳</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-green-700 mt-10 pt-6 text-center">
+                <p class="text-green-200">© ۱۴۰۴ حامی کشت | تمامی حقوق محفوظ است</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // اسکریپت برای منوی موبایل
+        document.addEventListener('DOMContentLoaded', function() {
+            // اسکریپت برای شمارنده‌های آماری
+            const counters = document.querySelectorAll('.stat-counter');
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+            
+            // اسکریپت برای آپلود تصویر
+            const dropArea = document.querySelector('.border-dashed');
+            if (dropArea) {
+                dropArea.addEventListener('click', () => {
+                    alert('این قابلیت در نسخه نمایشی فعال نیست');
+                });
+            }
+            
+            // اسکریپت برای دکمه‌های فرم
+            const submitButton = document.querySelector('form button');
+            if (submitButton) {
+                submitButton.addEventListener('click', () => {
+                    alert('درخواست شما با موفقیت ثبت شد. کارشناسان ما در اسرع وقت با شما تماس خواهند گرفت.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
