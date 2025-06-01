@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,65 +8,148 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
-                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%234CAF50' /%3E%3Cpath d='M0 200 Q 200 100 400 200 T 800 200' stroke='%2343A047' stroke-width='10' fill='none' /%3E%3Cpath d='M0 250 Q 200 150 400 250 T 800 250' stroke='%2343A047' stroke-width='8' fill='none' /%3E%3Ccircle cx='600' cy='100' r='60' fill='%23FFC107' /%3E%3Cpath d='M0 50 L 800 50 L 800 0 L 0 0 Z' fill='%23388E3C' /%3E%3Cpath d='M100 400 Q 200 300 300 350 T 500 300 T 700 350 T 800 300 L 800 400 L 100 400 Z' fill='%23388E3C' /%3E%3C/svg%3E");
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%234CAF50' /%3E%3Cpath d='M0 200 Q 200 100 400 200 T 800 200' stroke='%2343A047' stroke-width='10' fill='none' /%3E%3Cpath d='M0 250 Q 200 150 400 250 T 800 250' stroke='%2343A047' stroke-width='8' fill='none' /%3E%3Ccircle cx='600' cy='100' r='60' fill='%23FFC107' /%3E%3Cpath d='M0 50 L 800 50 L 800 0 L 0 0 Z' fill='%23388E3C' /%3E%3Cpath d='M100 400 Q 200 300 300 350 T 500 300 T 700 350 T 800 300 L 800 400 L 100 400 Z' fill='%23388E3C' /%3E%3C/svg%3E");
             background-size: cover;
             background-position: center;
         }
-        
+
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        
+
         .btn-primary {
             background-color: #4CAF50;
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             background-color: #388E3C;
             transform: translateY(-2px);
         }
-        
+
         .btn-secondary {
             background-color: #FFA726;
             transition: all 0.3s ease;
         }
-        
+
         .btn-secondary:hover {
             background-color: #FB8C00;
             transform: translateY(-2px);
         }
-        
+
         .btn-tertiary {
             background-color: #29B6F6;
             transition: all 0.3s ease;
         }
-        
+
         .btn-tertiary:hover {
             background-color: #0288D1;
             transform: translateY(-2px);
         }
-        
+
         .stat-counter {
             animation: countUp 3s ease-out forwards;
         }
-        
+
         @keyframes countUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .selected {
+            border-color: #4CAF50;
+            background-color: #F0FFF4;
+        }
+
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+
+        .card-option.selected {
+            border-color: #4CAF50 !important;
+            background-color: #F0FFF4 !important;
+            box-shadow: 0 0 0 2px #A7F3D0;
         }
     </style>
 </head>
+
 <body>
     <!-- بخش اصلی (Hero Section) -->
     <section class="hero-bg text-white py-20 md:py-32">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-3xl md:text-5xl font-bold mb-6">🌿 مشاوره جهادی و رایگان برای کشاورزان و باغ‌داران 🌿</h1>
             <p class="text-xl md:text-2xl mb-8">ما اینجاییم تا به شما کمک کنیم مشکلات محصولاتتون رو حل کنید</p>
-            <p class="text-lg md:text-xl mb-10 opacity-90">مشاوره رایگان، دقیق، هوشمند و بدون هزینه برای کشاورزان و باغداران عزیز</p>
-            <button class="btn-secondary text-white text-xl px-8 py-4 rounded-lg font-bold shadow-lg">
+            <p class="text-lg md:text-xl mb-10 opacity-90">مشاوره رایگان، دقیق، هوشمند و بدون هزینه برای کشاورزان و
+                باغداران عزیز</p>
+            <button id="openConsultationBtn"
+                class="btn-secondary text-white text-xl px-8 py-4 rounded-lg font-bold shadow-lg">
                 🌾 دریافت مشاوره هوشمند 🌾
             </button>
         </div>
@@ -77,7 +161,8 @@
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">خدمات ما</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- کارت 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-500 card-hover transition-all duration-300">
+                <div
+                    class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-500 card-hover transition-all duration-300">
                     <div class="text-4xl mb-4 text-green-500">📈</div>
                     <h3 class="text-xl font-bold mb-3 text-gray-800">درخواست مشاوره تخصصی</h3>
                     <p class="text-gray-600 mb-6">برای ثبت مشکل و بررسی توسط متخصصان</p>
@@ -85,19 +170,21 @@
                         ثبت درخواست
                     </button>
                 </div>
-                
+
                 <!-- کارت 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-orange-500 card-hover transition-all duration-300">
+                <div
+                    class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-orange-500 card-hover transition-all duration-300">
                     <div class="text-4xl mb-4 text-orange-500">🧠</div>
                     <h3 class="text-xl font-bold mb-3 text-gray-800">دریافت مشاوره هوشمند</h3>
                     <p class="text-gray-600 mb-6">استفاده از هوش مصنوعی برای تحلیل و پیشنهاد</p>
-                    <button class="btn-secondary text-white px-6 py-3 rounded-lg w-full">
+                    <button id="openConsultationBtn2" class="btn-secondary text-white px-6 py-3 rounded-lg w-full">
                         مشاوره هوشمند
                     </button>
                 </div>
-                
+
                 <!-- کارت 3 -->
-                <div class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-blue-500 card-hover transition-all duration-300">
+                <div
+                    class="bg-white rounded-xl shadow-lg p-6 border-t-4 border-blue-500 card-hover transition-all duration-300">
                     <div class="text-4xl mb-4 text-blue-500">🛒</div>
                     <h3 class="text-xl font-bold mb-3 text-gray-800">معرفی محصولات و خدمات</h3>
                     <p class="text-gray-600 mb-6">مشاهده محصولات مناسب و توصیه‌شده</p>
@@ -120,28 +207,28 @@
                     <h3 class="font-bold text-lg mb-2">مشاوره فوری و دقیق</h3>
                     <p class="text-gray-600 text-sm">پاسخگویی سریع به نیازهای شما</p>
                 </div>
-                
+
                 <!-- مزیت 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
                     <div class="text-green-500 text-3xl mb-4">✅</div>
                     <h3 class="font-bold text-lg mb-2">تحلیل بر اساس داده‌های واقعی</h3>
                     <p class="text-gray-600 text-sm">استفاده از اطلاعات دقیق و به‌روز</p>
                 </div>
-                
+
                 <!-- مزیت 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
                     <div class="text-green-500 text-3xl mb-4">✅</div>
                     <h3 class="font-bold text-lg mb-2">بدون هزینه و کاملاً رایگان</h3>
                     <p class="text-gray-600 text-sm">خدمات مشاوره‌ای بدون پرداخت هزینه</p>
                 </div>
-                
+
                 <!-- مزیت 4 -->
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
                     <div class="text-green-500 text-3xl mb-4">✅</div>
                     <h3 class="font-bold text-lg mb-2">مناسب همه محصولات کشاورزی</h3>
                     <p class="text-gray-600 text-sm">پشتیبانی از انواع محصولات زراعی و باغی</p>
                 </div>
-                
+
                 <!-- مزیت 5 -->
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
                     <div class="text-green-500 text-3xl mb-4">✅</div>
@@ -181,37 +268,46 @@
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 max-w-3xl">
             <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">ثبت سریع مشکل</h2>
-            <p class="text-center text-gray-600 mb-8">مشکل خود را به سرعت با ما در میان بگذارید تا کارشناسان ما در اسرع وقت به شما پاسخ دهند</p>
-            
+            <p class="text-center text-gray-600 mb-8">مشکل خود را به سرعت با ما در میان بگذارید تا کارشناسان ما در اسرع
+                وقت به شما پاسخ دهند</p>
+
             <form class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
                 <div class="mb-6">
                     <label class="block text-gray-700 font-bold mb-2" for="product">
                         نام محصول
                     </label>
-                    <input class="appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500" id="product" type="text" placeholder="مثال: گندم، سیب، زیتون">
+                    <input
+                        class="appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
+                        id="product" type="text" placeholder="مثال: گندم، سیب، زیتون">
                 </div>
-                
+
                 <div class="mb-6">
                     <label class="block text-gray-700 font-bold mb-2" for="problem">
                         شرح مشکل
                     </label>
-                    <textarea class="appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500" id="problem" rows="4" placeholder="مشکل خود را توضیح دهید..."></textarea>
+                    <textarea
+                        class="appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-green-500"
+                        id="problem" rows="4" placeholder="مشکل خود را توضیح دهید..."></textarea>
                 </div>
-                
+
                 <div class="mb-8">
                     <label class="block text-gray-700 font-bold mb-2" for="image">
                         افزودن تصویر (اختیاری)
                     </label>
-                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-green-500 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <div
+                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-green-500 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                         <p class="mt-2 text-sm text-gray-600">برای آپلود تصویر کلیک کنید یا فایل را اینجا رها کنید</p>
                     </div>
                 </div>
-                
+
                 <div class="flex justify-center">
-                    <button class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg" type="button">
+                    <button class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg"
+                        type="button">
                         ارسال درخواست
                     </button>
                 </div>
@@ -228,23 +324,27 @@
                     <p class="text-green-100">مشاوره هوشمند و رایگان برای کشاورزان و باغداران عزیز</p>
                     <div class="flex mt-4 space-x-4 space-x-reverse">
                         <a href="#" class="bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M22.05 1.577c-.393-.016-.784.08-1.117.235-.484.186-4.92 1.902-9.41 3.64-2.26.873-4.518 1.746-6.256 2.415-1.737.67-3.045 1.168-3.114 1.192-.46.16-1.082.362-1.61.984-.133.155-.267.354-.335.628s-.077.56-.023.812c.268 1.32 1.352 1.895 1.905 2.155.143.066 1.33.573 2.42 1.025.265 1.3.683 3.367 1.022 5.04.476 2.36 1.12 5.565 1.187 5.957.075.462.33.916.618 1.17s.598.273.96.273c.41.01.816-.176 1.1-.45.9-.83 2.364-2.42 2.364-2.42l3.33 2.45c.218.163.456.24.69.23.413-.014.813-.225 1.07-.483.315-.32.49-.77.6-1.37.186-1.034 1.972-11.475 2.264-13.18.152-.865.222-1.587.234-2.132.01-.394-.01-.794-.186-1.14-.175-.354-.505-.6-.88-.653zm-2.622 2.97c-.282 1.634-1.943 10.598-2.15 11.775-.203 1.16-1.006 1.055-1.006 1.055l-4.15-3.04s-2.344 2.272-2.853 2.757c-.24.226-.504.18-.504-.173 0 0 .083-2.216.282-3.63.1-.718.48-1.94.907-3.202.9-2.667 2.187-6.5 2.187-6.5l8.07-3.018c.417-.153.708.002.708.002.01 0 .65.258.51.982z"/>
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M22.05 1.577c-.393-.016-.784.08-1.117.235-.484.186-4.92 1.902-9.41 3.64-2.26.873-4.518 1.746-6.256 2.415-1.737.67-3.045 1.168-3.114 1.192-.46.16-1.082.362-1.61.984-.133.155-.267.354-.335.628s-.077.56-.023.812c.268 1.32 1.352 1.895 1.905 2.155.143.066 1.33.573 2.42 1.025.265 1.3.683 3.367 1.022 5.04.476 2.36 1.12 5.565 1.187 5.957.075.462.33.916.618 1.17s.598.273.96.273c.41.01.816-.176 1.1-.45.9-.83 2.364-2.42 2.364-2.42l3.33 2.45c.218.163.456.24.69.23.413-.014.813-.225 1.07-.483.315-.32.49-.77.6-1.37.186-1.034 1.972-11.475 2.264-13.18.152-.865.222-1.587.234-2.132.01-.394-.01-.794-.186-1.14-.175-.354-.505-.6-.88-.653zm-2.622 2.97c-.282 1.634-1.943 10.598-2.15 11.775-.203 1.16-1.006 1.055-1.006 1.055l-4.15-3.04s-2.344 2.272-2.853 2.757c-.24.226-.504.18-.504-.173 0 0 .083-2.216.282-3.63.1-.718.48-1.94.907-3.202.9-2.667 2.187-6.5 2.187-6.5l8.07-3.018c.417-.153.708.002.708.002.01 0 .65.258.51.982z" />
                         </a>
                         <a href="#" class="bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                         </a>
                         <a href="#" class="bg-white bg-opacity-20 p-2 rounded-full hover:bg-opacity-30 transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                         </a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-xl font-bold mb-4">لینک‌های مهم</h3>
                     <ul class="space-y-2">
@@ -255,90 +355,836 @@
                         <li><a href="#" class="text-green-100 hover:text-white transition-colors">سوالات متداول</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-xl font-bold mb-4">خدمات</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-green-100 hover:text-white transition-colors">مشاوره تخصصی</a></li>
                         <li><a href="#" class="text-green-100 hover:text-white transition-colors">مشاوره هوشمند</a></li>
-                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">محصولات کشاورزی</a></li>
-                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">آموزش‌های کشاورزی</a></li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">محصولات کشاورزی</a>
+                        </li>
+                        <li><a href="#" class="text-green-100 hover:text-white transition-colors">آموزش‌های کشاورزی</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-xl font-bold mb-4">تماس با ما</h3>
                     <ul class="space-y-2">
                         <li class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
                             <span class="text-green-100">۰۲۱-۱۲۳۴۵۶۷۸</span>
                         </li>
                         <li class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                             <span class="text-green-100">info@hamikesht.ir</span>
                         </li>
                         <li class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-green-300" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                             <span class="text-green-100">تهران، خیابان کشاورز، پلاک ۱۲۳</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            
+
             <div class="border-t border-green-700 mt-10 pt-6 text-center">
                 <p class="text-green-200">© ۱۴۰۴ حامی کشت | تمامی حقوق محفوظ است</p>
             </div>
         </div>
     </footer>
 
+    <!-- Modal مشاوره هوشمند -->
+    <div id="consultationModal" class="modal hidden">
+        <div class="modal-content fade-in">
+            <span class="close-modal" id="closeModalBtn">&times;</span>
+
+            <!-- Progress Bar -->
+            <div class="px-6 pt-4">
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progressBar" class="bg-green-600 h-2.5 rounded-full progress-bar" style="width: 16%"></div>
+                </div>
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>دسته‌بندی</span>
+                    <span>محصول</span>
+                    <span>مشکلات</span>
+                    <span>جزئیات</span>
+                    <span>تحلیل</span>
+                    <span>نتیجه</span>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-6">
+                <!-- Step 1: Category Selection -->
+                <div id="step1" class="fade-in">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">چه نوع محصولی دارید؟</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                        <div class="card-option cursor-pointer bg-white border-2 border-gray-200 rounded-xl p-4 flex flex-col items-center hover:shadow-lg"
+                            data-category="agriculture">
+                            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-3">
+                                <span class="text-3xl">🌾</span>
+                            </div>
+                            <h4 class="font-medium text-gray-800">کشاورزی</h4>
+                            <p class="text-sm text-gray-500 text-center mt-2">گندم، جو، ذرت و سایر محصولات زراعی</p>
+                        </div>
+
+                        <div class="card-option cursor-pointer bg-white border-2 border-gray-200 rounded-xl p-4 flex flex-col items-center hover:shadow-lg"
+                            data-category="garden">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                                <span class="text-3xl">🌳</span>
+                            </div>
+                            <h4 class="font-medium text-gray-800">باغی</h4>
+                            <p class="text-sm text-gray-500 text-center mt-2">سیب، گلابی، هلو و سایر میوه‌ها</p>
+                        </div>
+
+                        <div class="card-option cursor-pointer bg-white border-2 border-gray-200 rounded-xl p-4 flex flex-col items-center hover:shadow-lg"
+                            data-category="greenhouse">
+                            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-3">
+                                <span class="text-3xl">🌸</span>
+                            </div>
+                            <h4 class="font-medium text-gray-800">گلخانه‌ای</h4>
+                            <p class="text-sm text-gray-500 text-center mt-2">خیار، گوجه، فلفل و گل‌های زینتی</p>
+                        </div>
+
+                        <div class="card-option cursor-pointer bg-white border-2 border-gray-200 rounded-xl p-4 flex flex-col items-center hover:shadow-lg"
+                            data-category="other">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-3">
+                                <span class="text-3xl">❓</span>
+                            </div>
+                            <h4 class="font-medium text-gray-800">سایر</h4>
+                            <p class="text-sm text-gray-500 text-center mt-2">سایر محصولات یا وارد کردن دستی</p>
+                        </div>
+                    </div>
+
+                    <div id="otherCategoryInput" class="mt-4 hidden">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">نام محصول خود را وارد کنید:</label>
+                        <input type="text"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                            placeholder="مثال: زعفران">
+                    </div>
+
+                    <div class="mt-8 flex justify-between">
+                        <button class="px-4 py-2 text-gray-600 hover:text-gray-800 flex items-center"
+                            id="backToMainBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            بستن
+                        </button>
+                        <button
+                            class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                            id="nextStep1" disabled>
+                            مرحله بعد
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Product Selection -->
+                <div id="step2" class="hidden fade-in">
+                    <div class="flex items-center mb-6">
+                        <button id="backToStep1" class="mr-2 p-1 hover:bg-gray-100 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <h3 class="text-xl font-bold text-gray-800">انتخاب محصول</h3>
+                    </div>
+
+                    <p class="text-gray-600 mb-6">لطفاً محصول مورد نظر خود را انتخاب کنید:</p>
+
+                    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Products will be dynamically inserted here -->
+                    </div>
+
+                    <div class="mt-8 flex justify-end">
+                        <button
+                            class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                            id="nextStep2" disabled>
+                            مرحله بعد
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Problem Selection -->
+                <div id="step3" class="hidden fade-in">
+                    <div class="flex items-center mb-6">
+                        <button id="backToStep2" class="mr-2 p-1 hover:bg-gray-100 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <h3 class="text-xl font-bold text-gray-800">مشکلات محصول</h3>
+                    </div>
+
+                    <p class="text-gray-600 mb-2">چه مشکلاتی در محصول خود مشاهده می‌کنید؟ (می‌توانید چند مورد را انتخاب
+                        کنید)</p>
+                    <p id="selectedProductDisplay" class="text-sm text-green-600 font-medium mb-6"></p>
+
+                    <div id="problemsList" class="space-y-2 mb-6">
+                        <!-- Problems will be dynamically inserted here -->
+                    </div>
+
+                    <div class="mt-8 flex justify-end">
+                        <button
+                            class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                            id="nextStep3">
+                            مرحله بعد
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Additional Details -->
+                <div id="step4" class="hidden fade-in">
+                    <div class="flex items-center mb-6">
+                        <button id="backToStep3" class="mr-2 p-1 hover:bg-gray-100 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <h3 class="text-xl font-bold text-gray-800">جزئیات بیشتر</h3>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">توضیحات بیشتر (اختیاری)</label>
+                            <textarea id="additionalDetails" rows="4"
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
+                                placeholder="جزئیات بیشتر مانند نوع کود مصرفی، زمان بروز مشکل، مساحت زمین، شرایط آب و هوایی و..."></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">آپلود عکس (اختیاری)</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition-colors cursor-pointer"
+                                id="dropZone">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <p class="mt-2 text-sm text-gray-600">عکس را اینجا بکشید و رها کنید یا کلیک کنید</p>
+                                <p class="mt-1 text-xs text-gray-500">در صورت امکان، عکس واضح از مشکل آپلود کنید</p>
+                                <input type="file" id="fileInput" accept="image/*" class="hidden">
+                            </div>
+
+                            <div id="imagePreview" class="hidden mt-4">
+                                <div class="relative">
+                                    <img id="previewImg" src="" alt="پیش‌نمایش"
+                                        class="w-full max-h-48 object-contain rounded-lg">
+                                    <button id="removeImage"
+                                        class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-end">
+                        <button
+                            class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                            id="nextStep4">
+                            ارسال برای تحلیل
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Analysis Loading -->
+                <div id="step5" class="hidden fade-in text-center py-10">
+                    <div class="flex flex-col items-center">
+                        <svg class="spinner h-16 w-16 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                        <h3 class="text-xl font-bold text-gray-800 mt-6">در حال تحلیل اطلاعات</h3>
+                        <p class="text-gray-600 mt-2">لطفاً صبر کنید...</p>
+                        <div class="w-64 bg-gray-200 rounded-full h-2.5 mt-6">
+                            <div id="analysisProgress" class="bg-green-600 h-2.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Results -->
+                <div id="step6" class="hidden fade-in">
+                    <div class="flex items-center mb-6">
+                        <h3 class="text-xl font-bold text-gray-800">نتیجه تحلیل</h3>
+                    </div>
+
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                        <div class="flex items-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600 ml-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h4 class="font-bold text-green-800">تحلیل با موفقیت انجام شد</h4>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <h5 class="font-medium text-gray-700 mb-1">خلاصه مشکل:</h5>
+                                <p id="problemSummary" class="text-gray-800">بر اساس اطلاعات ارائه شده، محصول شما دچار
+                                    کمبود مواد مغذی و آلودگی قارچی شده است.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-medium text-gray-700 mb-1">تحلیل هوش مصنوعی:</h5>
+                                <p id="aiAnalysis" class="text-gray-800">علائم نشان می‌دهد که خاک مزرعه شما دچار کمبود
+                                    پتاسیم و فسفر است. همچنین رطوبت بالا باعث رشد قارچ در محصول شده است. این مشکل در این
+                                    فصل سال برای این نوع محصول شایع است.</p>
+                            </div>
+
+                            <div>
+                                <h5 class="font-medium text-gray-700 mb-1">راهکار پیشنهادی:</h5>
+                                <ul class="list-disc list-inside text-gray-800 space-y-1">
+                                    <li>استفاده از کود غنی از پتاسیم و فسفر</li>
+                                    <li>کاهش آبیاری و بهبود زهکشی خاک</li>
+                                    <li>استفاده از قارچ‌کش مناسب برای از بین بردن آلودگی موجود</li>
+                                    <li>بازرسی منظم محصول در هفته‌های آینده</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border border-gray-200 rounded-lg p-6">
+                        <h4 class="font-bold text-gray-800 mb-4">محصولات پیشنهادی</h4>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div
+                                class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                                <div class="bg-green-50 p-3 flex items-center justify-center h-32">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h5 class="font-bold text-gray-800">کود NPK غنی از پتاسیم</h5>
+                                    <p class="text-sm text-gray-600 mt-1">مناسب برای تقویت خاک و رفع کمبود مواد مغذی</p>
+                                    <div class="flex justify-between items-center mt-4">
+                                        <span class="text-green-700 font-bold">۲۵۰,۰۰۰ تومان</span>
+                                        <button
+                                            class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 text-sm">سفارش</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md">
+                                <div class="bg-green-50 p-3 flex items-center justify-center h-32">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-600" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2H5a2 2 0 00-2 2v2M7 7h10" />
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h5 class="font-bold text-gray-800">قارچ‌کش ارگانیک</h5>
+                                    <p class="text-sm text-gray-600 mt-1">مناسب برای از بین بردن قارچ‌ها بدون آسیب به
+                                        محصول</p>
+                                    <div class="flex justify-between items-center mt-4">
+                                        <span class="text-green-700 font-bold">۱۸۰,۰۰۰ تومان</span>
+                                        <button
+                                            class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 text-sm">سفارش</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 text-center">
+                            <button
+                                class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                                مشاهده همه محصولات مرتبط
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-between">
+                        <button class="px-4 py-2 text-gray-600 hover:text-gray-800 flex items-center"
+                            id="startNewConsultation">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            مشاوره جدید
+                        </button>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                            id="downloadReport">
+                            دانلود گزارش
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 inline" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // اسکریپت برای منوی موبایل
-        document.addEventListener('DOMContentLoaded', function() {
-            // اسکریپت برای شمارنده‌های آماری
-            const counters = document.querySelectorAll('.stat-counter');
-            const options = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, options);
-            
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
-            
-            // اسکریپت برای آپلود تصویر
-            const dropArea = document.querySelector('.border-dashed');
-            if (dropArea) {
-                dropArea.addEventListener('click', () => {
-                    alert('این قابلیت در نسخه نمایشی فعال نیست');
-                });
-            }
-            
-            // اسکریپت برای دکمه‌های فرم
-            const submitButton = document.querySelector('form button');
-            if (submitButton) {
-                submitButton.addEventListener('click', () => {
-                    alert('درخواست شما با موفقیت ثبت شد. کارشناسان ما در اسرع وقت با شما تماس خواهند گرفت.');
-                });
+        // Data for products and problems
+        const productData = {
+            agriculture: [
+                { id: 'wheat', name: 'گندم', icon: '🌾' },
+                { id: 'barley', name: 'جو', icon: '🌾' },
+                { id: 'corn', name: 'ذرت', icon: '🌽' },
+                { id: 'rice', name: 'برنج', icon: '🍚' },
+                { id: 'cotton', name: 'پنبه', icon: '💮' },
+                { id: 'potato', name: 'سیب زمینی', icon: '🥔' }
+            ],
+            garden: [
+                { id: 'apple', name: 'سیب', icon: '🍎' },
+                { id: 'pear', name: 'گلابی', icon: '🍐' },
+                { id: 'peach', name: 'هلو', icon: '🍑' },
+                { id: 'apricot', name: 'زردآلو', icon: '🍑' },
+                { id: 'cherry', name: 'گیلاس', icon: '🍒' },
+                { id: 'grape', name: 'انگور', icon: '🍇' }
+            ],
+            greenhouse: [
+                { id: 'cucumber', name: 'خیار', icon: '🥒' },
+                { id: 'tomato', name: 'گوجه فرنگی', icon: '🍅' },
+                { id: 'pepper', name: 'فلفل', icon: '🌶️' },
+                { id: 'eggplant', name: 'بادمجان', icon: '🍆' },
+                { id: 'rose', name: 'گل رز', icon: '🌹' },
+                { id: 'strawberry', name: 'توت فرنگی', icon: '🍓' }
+            ],
+            other: [
+                { id: 'saffron', name: 'زعفران', icon: '🌷' },
+                { id: 'pistachio', name: 'پسته', icon: '🥜' },
+                { id: 'date', name: 'خرما', icon: '🌴' },
+                { id: 'olive', name: 'زیتون', icon: '🫒' }
+            ]
+        };
+
+        const problemData = {
+            wheat: [
+                { id: 'low-yield', name: 'کم باردهی' },
+                { id: 'yellow-leaves', name: 'زرد شدن برگ' },
+                { id: 'pests', name: 'آفات' },
+                { id: 'fungal-disease', name: 'بیماری‌های قارچی' },
+                { id: 'drought-damage', name: 'آسیب خشکسالی' }
+            ],
+            apple: [
+                { id: 'black-spots', name: 'لکه‌های سیاه' },
+                { id: 'early-drop', name: 'ریزش زودهنگام' },
+                { id: 'worms', name: 'کرم زدگی' },
+                { id: 'small-size', name: 'کوچک بودن میوه' },
+                { id: 'leaf-curl', name: 'پیچیدگی برگ' }
+            ],
+            cucumber: [
+                { id: 'yellow-leaves', name: 'زرد شدن برگ‌ها' },
+                { id: 'powdery-mildew', name: 'سفیدک پودری' },
+                { id: 'bitter-taste', name: 'طعم تلخ' },
+                { id: 'stunted-growth', name: 'رشد کم' },
+                { id: 'flower-drop', name: 'ریزش گل' }
+            ]
+            // Default problems for other products
+        };
+
+        // Default problems for products without specific problems
+        const defaultProblems = [
+            { id: 'low-yield', name: 'کم باردهی' },
+            { id: 'discoloration', name: 'تغییر رنگ' },
+            { id: 'pests', name: 'آفات' },
+            { id: 'disease', name: 'بیماری' },
+            { id: 'growth-issues', name: 'مشکلات رشد' }
+        ];
+
+        // Variables to store user selections
+        let selectedCategory = '';
+        let selectedProduct = '';
+        let selectedProblems = [];
+        let uploadedImage = null;
+
+        // DOM Elements
+        const steps = ['step1', 'step2', 'step3', 'step4', 'step5', 'step6'];
+        const progressBar = document.getElementById('progressBar');
+        const consultationModal = document.getElementById('consultationModal');
+        const openConsultationBtn = document.getElementById('openConsultationBtn');
+        const openConsultationBtn2 = document.getElementById('openConsultationBtn2');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const backToMainBtn = document.getElementById('backToMainBtn');
+
+        // Open modal when clicking on consultation buttons
+        openConsultationBtn.addEventListener('click', function () {
+            consultationModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        openConsultationBtn2.addEventListener('click', function () {
+            consultationModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close modal
+        closeModalBtn.addEventListener('click', function () {
+            consultationModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        backToMainBtn.addEventListener('click', function () {
+            if (confirm('آیا مطمئن هستید که می‌خواهید مشاوره را ترک کنید؟')) {
+                consultationModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
             }
         });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function (event) {
+            if (event.target === consultationModal) {
+                consultationModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Step 1: Category Selection
+        document.querySelectorAll('.card-option').forEach(card => {
+            card.addEventListener('click', function () {
+                document.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedCategory = this.dataset.category;
+
+                if (selectedCategory === 'other') {
+                    document.getElementById('otherCategoryInput').classList.remove('hidden');
+                } else {
+                    document.getElementById('otherCategoryInput').classList.add('hidden');
+                }
+
+                document.getElementById('nextStep1').removeAttribute('disabled');
+            });
+        });
+
+        document.getElementById('nextStep1').addEventListener('click', function () {
+            goToStep(2);
+            loadProducts();
+        });
+
+        // Step 2: Product Selection
+        function loadProducts() {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+
+            const products = productData[selectedCategory] || [];
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card cursor-pointer bg-white border-2 border-gray-200 rounded-lg p-4 flex flex-col items-center hover:shadow-md';
+                productCard.dataset.product = product.id;
+
+                productCard.innerHTML = `
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-2">
+                        <span class="text-2xl">${product.icon}</span>
+                    </div>
+                    <h4 class="font-medium text-gray-800">${product.name}</h4>
+                `;
+
+                productCard.addEventListener('click', function () {
+                    document.querySelectorAll('.product-card').forEach(c => c.classList.remove('border-green-500', 'bg-green-50'));
+                    this.classList.add('border-green-500', 'bg-green-50');
+                    selectedProduct = this.dataset.product;
+                    document.getElementById('nextStep2').removeAttribute('disabled');
+                });
+
+                productGrid.appendChild(productCard);
+            });
+        }
+
+        document.getElementById('backToStep1').addEventListener('click', function () {
+            goToStep(1);
+        });
+
+        document.getElementById('nextStep2').addEventListener('click', function () {
+            goToStep(3);
+            loadProblems();
+        });
+
+        // Step 3: Problem Selection
+        function loadProblems() {
+            const problemsList = document.getElementById('problemsList');
+            problemsList.innerHTML = '';
+
+            // Display selected product name
+            const productName = getProductName(selectedProduct);
+            document.getElementById('selectedProductDisplay').textContent = `محصول انتخاب شده: ${productName}`;
+
+            // Get problems for the selected product or use default problems
+            const problems = problemData[selectedProduct] || defaultProblems;
+
+            // Add "None" option
+            const noneOption = document.createElement('div');
+            noneOption.className = 'checkbox-item flex items-center p-3 border border-gray-200 rounded-lg';
+            noneOption.innerHTML = `
+                <input type="checkbox" id="problem-none" class="w-5 h-5 text-green-600 rounded focus:ring-green-500 ml-3">
+                <label for="problem-none" class="text-gray-800 cursor-pointer flex-grow">هیچ‌کدام از موارد فوق</label>
+            `;
+
+            const noneCheckbox = noneOption.querySelector('input');
+            noneCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    // Uncheck all other problems
+                    document.querySelectorAll('#problemsList input[type="checkbox"]:not(#problem-none)').forEach(cb => {
+                        cb.checked = false;
+                    });
+                    selectedProblems = ['none'];
+                } else {
+                    selectedProblems = selectedProblems.filter(p => p !== 'none');
+                }
+            });
+
+            problemsList.appendChild(noneOption);
+
+            // Add all problem options
+            problems.forEach(problem => {
+                const problemItem = document.createElement('div');
+                problemItem.className = 'checkbox-item flex items-center p-3 border border-gray-200 rounded-lg';
+                problemItem.innerHTML = `
+                    <input type="checkbox" id="problem-${problem.id}" class="w-5 h-5 text-green-600 rounded focus:ring-green-500 ml-3">
+                    <label for="problem-${problem.id}" class="text-gray-800 cursor-pointer flex-grow">${problem.name}</label>
+                `;
+
+                const checkbox = problemItem.querySelector('input');
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        // If a problem is checked, uncheck "None"
+                        document.getElementById('problem-none').checked = false;
+                        selectedProblems = selectedProblems.filter(p => p !== 'none');
+                        selectedProblems.push(problem.id);
+                    } else {
+                        selectedProblems = selectedProblems.filter(p => p !== problem.id);
+                    }
+                });
+
+                problemsList.appendChild(problemItem);
+            });
+        }
+
+        document.getElementById('backToStep2').addEventListener('click', function () {
+            goToStep(2);
+        });
+
+        document.getElementById('nextStep3').addEventListener('click', function () {
+            goToStep(4);
+        });
+
+        // Step 4: Additional Details
+        document.getElementById('backToStep3').addEventListener('click', function () {
+            goToStep(3);
+        });
+
+        // File upload handling
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+
+        dropZone.addEventListener('click', function () {
+            fileInput.click();
+        });
+
+        dropZone.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            this.classList.add('border-green-500', 'bg-green-50');
+        });
+
+        dropZone.addEventListener('dragleave', function () {
+            this.classList.remove('border-green-500', 'bg-green-50');
+        });
+
+        dropZone.addEventListener('drop', function (e) {
+            e.preventDefault();
+            this.classList.remove('border-green-500', 'bg-green-50');
+
+            if (e.dataTransfer.files.length) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', function () {
+            if (this.files.length) {
+                handleFile(this.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            if (file.type.startsWith('image/')) {
+                uploadedImage = file;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('imagePreview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        document.getElementById('removeImage').addEventListener('click', function () {
+            uploadedImage = null;
+            fileInput.value = '';
+            document.getElementById('imagePreview').classList.add('hidden');
+        });
+
+        document.getElementById('nextStep4').addEventListener('click', function () {
+            goToStep(5);
+            simulateAnalysis();
+        });
+
+        // Step 5: Analysis Loading
+        function simulateAnalysis() {
+            let progress = 0;
+            const analysisProgress = document.getElementById('analysisProgress');
+
+            const interval = setInterval(() => {
+                progress += 5;
+                analysisProgress.style.width = `${progress}%`;
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        goToStep(6);
+                    }, 500);
+                }
+            }, 150);
+        }
+
+        // Step 6: Results
+        document.getElementById('startNewConsultation').addEventListener('click', function () {
+            resetConsultation();
+            goToStep(1);
+        });
+
+        document.getElementById('downloadReport').addEventListener('click', function () {
+            alert('گزارش تحلیل در حال دانلود است...');
+        });
+
+        // Helper Functions
+        function goToStep(stepNumber) {
+            steps.forEach((step, index) => {
+                document.getElementById(step).classList.add('hidden');
+            });
+
+            document.getElementById(`step${stepNumber}`).classList.remove('hidden');
+
+            // Update progress bar
+            const progressPercentage = ((stepNumber - 1) / (steps.length - 1)) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+
+        function getProductName(productId) {
+            for (const category in productData) {
+                const product = productData[category].find(p => p.id === productId);
+                if (product) return product.name;
+            }
+            return productId;
+        }
+
+        function resetConsultation() {
+            selectedCategory = '';
+            selectedProduct = '';
+            selectedProblems = [];
+            uploadedImage = null;
+
+            document.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
+            document.getElementById('nextStep1').setAttribute('disabled', 'disabled');
+            document.getElementById('otherCategoryInput').classList.add('hidden');
+            document.getElementById('imagePreview').classList.add('hidden');
+            fileInput.value = '';
+        }
+
+        // اسکریپت برای شمارنده‌های آماری
+        const counters = document.querySelectorAll('.stat-counter');
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // اسکریپت برای آپلود تصویر
+        const dropArea = document.querySelector('.border-dashed');
+        if (dropArea) {
+            dropArea.addEventListener('click', () => {
+                alert('این قابلیت در نسخه نمایشی فعال نیست');
+            });
+        }
+
+        // اسکریپت برای دکمه‌های فرم
+        const submitButton = document.querySelector('form button');
+        if (submitButton) {
+            submitButton.addEventListener('click', () => {
+                alert('درخواست شما با موفقیت ثبت شد. کارشناسان ما در اسرع وقت با شما تماس خواهند گرفت.');
+            });
+        }
     </script>
 </body>
+
 </html>
