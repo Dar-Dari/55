@@ -1107,7 +1107,7 @@
             goToStep(5);
             simulateAnalysis();
 
-            fetch('http://127.0.0.1:8000/api/analyze', {
+            fetch('https://five5-96ow.onrender.com', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -1130,7 +1130,7 @@
                             document.getElementById('aiAnalysis').textContent = '';
                             document.querySelector('#step6 ul').innerHTML = '';
                         }
-                    }, 2000); // کمی تاخیر برای نمایش انیمیشن تحلیل
+                    }, 2000); // کمی تاخیر برای نمایش انیمیشن تحلیل 
                 })
                 .catch(() => {
                     setTimeout(() => {
