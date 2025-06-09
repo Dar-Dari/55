@@ -1107,7 +1107,7 @@
             goToStep(5);
             simulateAnalysis();
 
-            fetch('https://five5-96ow.onrender.com', {
+            fetch('https://five5-96ow.onrender.com/api/analyze', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
