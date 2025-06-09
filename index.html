@@ -1081,9 +1081,66 @@
         });
 
         document.getElementById('nextStep4').addEventListener('click', function () {
+            const product = selectedProduct || document.querySelector('#otherCategoryInput input')?.value || '';
+            const data = {
+                user_id: window?.telegram?.WebApp?.initDataUnsafe?.user?.id || 0,
+                product,
+                problems: selectedProblems,
+                extra_info: document.getElementById('additionalDetails').value || "",
+                photos: []
+            };
+
+            // اگر عکس آپلود شده بود، به صورت base64 اضافه کن
+            if (uploadedImage) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    data.photos.push(e.target.result);
+                    sendData(data);
+                };
+                reader.readAsDataURL(uploadedImage);
+            } else {
+                sendData(data);
+            }
+        });
+
+        function sendData(data) {
             goToStep(5);
             simulateAnalysis();
-        });
+
+            fetch('http://127.0.0.1:8000/api/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+                .then(r => r.json())
+                .then(res => {
+                    setTimeout(() => {
+                        goToStep(6);
+                        // اگر تحلیل موفق بود
+                        if (res.success && res.result) {
+                            document.getElementById('problemSummary').textContent = res.result.summary || 'خلاصه‌ای موجود نیست.';
+                            document.getElementById('aiAnalysis').textContent = res.result.analysis || 'تحلیل موجود نیست.';
+                            if (Array.isArray(res.result.suggestions)) {
+                                document.querySelector('#step6 ul').innerHTML =
+                                    res.result.suggestions.map(s => `<li>${s}</li>`).join('');
+                            }
+                        } else {
+                            // اگر تحلیل انجام نشد و داده به بات ارسال شد
+                            document.getElementById('problemSummary').textContent = 'در حال حاضر تحلیل هوشمند انجام نشد. پاسخ شما توسط پشتیبان ارسال خواهد شد.';
+                            document.getElementById('aiAnalysis').textContent = '';
+                            document.querySelector('#step6 ul').innerHTML = '';
+                        }
+                    }, 2000); // کمی تاخیر برای نمایش انیمیشن تحلیل
+                })
+                .catch(() => {
+                    setTimeout(() => {
+                        goToStep(6);
+                        document.getElementById('problemSummary').textContent = 'خطا در ارتباط با سرور. لطفاً دوباره تلاش کنید.';
+                        document.getElementById('aiAnalysis').textContent = '';
+                        document.querySelector('#step6 ul').innerHTML = '';
+                    }, 2000);
+                });
+        }
 
         // Step 5: Analysis Loading
         function simulateAnalysis() {
@@ -1130,6 +1187,7 @@
             for (const category in productData) {
                 const product = productData[category].find(p => p.id === productId);
                 if (product) return product.name;
+
             }
             return productId;
         }
