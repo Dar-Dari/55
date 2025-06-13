@@ -11,6 +11,7 @@ from aiogram.types import FSInputFile
 from io import BytesIO
 import base64
 import tempfile
+from openai import OpenAI
 
 # ---------- env & global ----------
 load_dotenv()
@@ -43,27 +44,37 @@ class Req(BaseModel):
 @app.post("/api/analyze")
 async def analyze(req: Req):
     """Endpointی که مینی-اپ صدا می‌زند."""
-    # ➊ تلاش برای تماس با هوش مصنوعی
-    if AI_KEY:            # یعنی کلید داری → تلاش می‌کنیم
+    if AI_KEY:
         try:
-            async with httpx.AsyncClient(timeout=20) as cli:
-                r = await cli.post(
-                    AI_URL,
-                    json=req.model_dump(),
-                    headers={"Authorization": f"Bearer {AI_KEY}"}
+            client = OpenAI(
+                base_url=AI_URL.replace("/chat/completions", ""),
+                api_key=AI_KEY
+            )
+            prompt = f"""
+            محصول: {req.product}
+            مشکلات: {', '.join(req.problems)}
+            توضیحات: {req.extra_info}
+            """
+            loop = asyncio.get_running_loop()
+            response = await loop.run_in_executor(
+                None,
+                lambda: client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[
+                        {"role": "system", "content": "تو یک کارشناس کشاورزی هستی که فقط به زبان فارسی و دقیق جواب می‌ده و راهکارها را به صورت لیست بولت‌دار (•) بنویس."},
+                        {"role": "user", "content": prompt}
+                    ]
                 )
-            r.raise_for_status()
-            data = r.json()
-            return {"success": True, "result": data}
+            )
+            data = response.choices[0].message.content
+
+            # استخراج راهکارها از متن (خطوطی که با • یا - شروع می‌شوند)
+            suggestions = re.findall(r"^[•\-]\s*(.+)$", data, re.MULTILINE)
+            return {"success": True, "result": {"analysis": data, "suggestions": suggestions}}
         except Exception as e:
-            # خطا در API → می‌رویم سراغ ادمین
             await notify_admin(req, str(e))
-
     else:
-        # اصلاً کلید نداریم → مستقیم سراغ ادمین
         await notify_admin(req, "NO_API_KEY")
-
-    # پاسخ خطا به فرانت
     return {"success": False}
 
 # ---------- کمک-تابع ارسال به ادمین ----------
